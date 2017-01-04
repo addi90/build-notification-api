@@ -7,7 +7,7 @@ export default (recieverToken, data) =>
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': AUTHORIZATION
+            'Authorization': `key=${AUTHORIZATION}`
         },
         body: JSON.stringify({
             "to" : recieverToken,
@@ -19,4 +19,10 @@ export default (recieverToken, data) =>
                 "body": "5 to 1"
             }
         })
+    })
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.log('the exception from FCM is: ', err);
     })
