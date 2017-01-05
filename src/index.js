@@ -1,6 +1,8 @@
 require('isomorphic-fetch');
 
 import Hapi from 'hapi';
+import Http2 from 'http2';
+import fs from 'fs';
 import sendNotif from './handlers/sendNotif';
 import { getTokenForUser, setTokenForUser } from './handlers/token'
 
@@ -9,8 +11,22 @@ const server = new Hapi.Server({
         request: ['error', 'info'] 
     } 
 });
+
+const listener = Http2.createServer({
+  key: fs.readFileSync('./key.pem'),
+  cert: fs.readFileSync('./cert.pem')
+})
+
+if (!listener.address) {
+  listener.address = function() {
+    return this._server.address()
+  }
+}
     
-server.connection({ port: 4567 });
+server.connection({ 
+    listener,
+    port: 4567 
+});
 
 server.start((err) => {
     if (err) {
