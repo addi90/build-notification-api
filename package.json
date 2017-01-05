@@ -8,7 +8,7 @@
     "prebuild": "rimraf dist",
     "build": "babel --out-dir dist src --ignore *.test.js",
     "prestart": "npm run build",
-    "start": "node --inspect dist/index.js"
+    "start": "node --inspect dist/index.js | ./node_modules/.bin/bunyan"
   },
   "repository": {
     "type": "git",
@@ -22,6 +22,7 @@
   "homepage": "https://github.com/addi90/build-notification-api#readme",
   "dependencies": {
     "babel-register": "^6.18.0",
+    "bunyan": "^1.8.5",
     "hapi": "^16.1.0",
     "http2": "^3.3.6",
     "isomorphic-fetch": "^2.2.1"
