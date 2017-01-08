@@ -39,3 +39,4 @@ jspm_packages
 # Output folders
 dist
 coverage
+.nyc_output

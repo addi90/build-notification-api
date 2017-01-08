@@ -1,11 +1,11 @@
 require('isomorphic-fetch');
-
+import fs from 'fs';
 import Hapi from 'hapi';
 import Http2 from 'http2';
-import fs from 'fs';
+
+import routes from './routes';
 import sendNotif from './handlers/sendNotif';
-import { getTokenForUser, setTokenForUser } from './handlers/token'
-import bunyan from 'bunyan';
+import { getTokenForUser, setTokenForUser } from './services/token'
 
 const server = new Hapi.Server({ 
     debug: { 
@@ -23,63 +23,17 @@ if (!listener.address) {
     return this._server.address()
   }
 }
-    
+
 server.connection({ 
     listener,
     port: 4567 
 });
 
-const log = bunyan.createLogger({
-    name: "build-notification-api"
-});
+server.route(routes);
 
 server.start((err) => {
     if (err) {
         throw err;
     }
-    log.info(`Server running at: ${server.info.uri}`);
-});
-
-server.route({
-    method: 'GET',
-    path: '/',
-    handler: function (request, reply) {
-        log.info(request.url);
-        reply('Hello, world!');
-    }
-});
-
-server.route({
-    method: 'GET',
-    path: '/{name}',
-    handler: function (request, reply) {
-        log.info(request.url);        
-        reply('Hello, ' + encodeURIComponent(request.params.name) + '!');
-    }
-});
-
-server.route({
-    method: 'POST',
-    path: '/token',
-    handler: function (request, reply) {
-        log.info(request.payload);        
-        const { userId = 1, token } = JSON.parse(request.payload);
-        setTokenForUser(userId, token);
-        
-        reply('Hello, ' + request.payload + '!');
-    }
-});
-
-server.route({
-    method: 'POST',
-    path: '/payload',
-    handler: function (request, reply) {
-        log.info(request.payload);        
-        const { userId = 1 } = request.payload;
-
-        // Send notification as a side effect
-        const usrToken = getTokenForUser(userId);//'BGs20gh1-DjFaBOSuTPWAZ-0yVVsD6UTgN21mHHaql_akxzgvlcfs5A6FvFXjDG7pfsk_bHqxq1YEUZSPmIL5rY=';
-        sendNotif(usrToken, request.payload);
-        reply('Hello, ' + request.payload + '!');
-    }
+    console.log(`Server running at: ${server.info.uri}`);
 });
