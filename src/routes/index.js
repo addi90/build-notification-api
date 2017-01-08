@@ -1,42 +1,25 @@
-import bunyan from 'bunyan';
-
-const log = bunyan.createLogger({
-    name: "build-notification-api"
-});
+import {
+    payloadHandler,
+    rootHandler,
+    saveTokenHandler
+} from '../handlers';
 
 export default [
     {
         method: 'GET',
         path: '/',
-        handler: function (request, reply) {
-            log.info(request.url);
-            reply('Hello, world!');
-        }
-    },
-
-    {
-        method: 'POST',
-        path: '/token',
-        handler: function (request, reply) {
-            log.info(request.payload);        
-            const { userId = 1, token } = JSON.parse(request.payload);
-            setTokenForUser(userId, token);
-            
-            reply('Hello, ' + request.payload + '!');
-        }
+        handler: rootHandler
     },
 
     {
         method: 'POST',
         path: '/payload',
-        handler: function (request, reply) {
-            log.info(request.payload);        
-            const { userId = 1 } = request.payload;
+        handler: payloadHandler
+    },
 
-            // Send notification as a side effect
-            const usrToken = getTokenForUser(userId);
-            sendNotif(usrToken, request.payload);
-            reply('Hello, ' + request.payload + '!');
-        }
+    {
+        method: 'POST',
+        path: '/token',
+        handler: saveTokenHandler
     } 
 ];

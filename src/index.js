@@ -4,8 +4,6 @@ import Hapi from 'hapi';
 import Http2 from 'http2';
 
 import routes from './routes';
-import sendNotif from './handlers/sendNotif';
-import { getTokenForUser, setTokenForUser } from './services/token'
 
 const server = new Hapi.Server({ 
     debug: { 
