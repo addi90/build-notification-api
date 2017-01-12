@@ -23,7 +23,6 @@ if (!listener.address) {
 }
 
 server.connection({ 
-    listener,
     port: 4567 
 });
 

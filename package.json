@@ -11,7 +11,7 @@
     "codecov": "cat coverage/*/lcov.info | codecov",
     "cover": "nyc npm t",
     "prebuild": "rimraf dist",
-    "build": "babel --out-dir dist src --ignore *.test.js",
+    "build": "babel --out-dir dist src --ignore **/*.spec.js",
     "prestart": "npm run build",
     "start": "node --inspect dist/index.js | ./node_modules/.bin/bunyan"
   },
