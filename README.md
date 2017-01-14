@@ -4,3 +4,8 @@
 
 # build-notification-api
 Server side API for the build-notification-app
+
+# Commands
+Start the server: `npm start`
+Run the tests: `npm t`
+Check code coverage: `npm run cover`
