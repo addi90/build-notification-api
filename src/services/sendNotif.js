@@ -12,9 +12,7 @@ export default (recieverToken, data) =>
         },
         body: JSON.stringify({
             "to" : recieverToken,
-            "data" : {
-                "text": "Hello world"
-            },
+            data,
             "notification": {
                 "title": "Portugal vs. Denmark",
                 "body": "5 to 1"
