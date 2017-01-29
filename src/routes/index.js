@@ -1,6 +1,7 @@
 import {
     payloadHandler,
     rootHandler,
+    getTokenHandler,
     saveTokenHandler
 } from '../handlers';
 
@@ -21,5 +22,11 @@ export default [
         method: 'POST',
         path: '/token',
         handler: saveTokenHandler
+    },
+
+    {
+        method: 'GET',
+        path: '/token',
+        handler: getTokenHandler
     } 
 ];

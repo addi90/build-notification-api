@@ -1,4 +1,5 @@
 {
-    "firebase_url": "https://fcm.googleapis.com/fcm/send",
+    "firebase_push_url": "https://fcm.googleapis.com/fcm/send",
+    "firebase_storage_url": "https://build-notification-app.firebaseio.com",
     "firebase_auth": "AAAAtMjnkeY:APA91bG8EvpcStvyPI-UgRs76lLDBcXKW0H-NJaptsG-SjxM4dEdhI__oYDOYnK3cTUSy2zgf7AoaB76ZUZ_QzCq0GsM1Ub_PvD9BggQaq-UENXeijxuRiZqDGB6eap9ozo7dyK8rqpuENUHyRqjkr-7nNMMR88qbg"
 }

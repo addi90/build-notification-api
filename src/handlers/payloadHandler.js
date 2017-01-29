@@ -7,7 +7,8 @@ export default (request, reply) => {
     const { userId = 1 } = request.payload;
 
     // Send notification as a side effect
-    const usrToken = getTokenForUser(userId);
-    sendNotif(usrToken, request.payload);
+    getTokenForUser(userId)
+        .then(usrToken => sendNotif(usrToken, request.payload));
+        
     reply('Hello, ' + request.payload + '!');
 };

@@ -1,10 +1,10 @@
 import { 
-    firebase_url, 
+    firebase_push_url, 
     firebase_auth 
 } from '../../config/config.json';
 
 export default (recieverToken, data) => 
-    fetch(firebase_url, {
+    fetch(firebase_push_url, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
