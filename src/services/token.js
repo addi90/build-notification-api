@@ -2,7 +2,6 @@ import {
     firebase_storage_url
 } from '../../config/config.json';
 
-// TODO: Replace this by Firebase storage
 export const setTokenForUser = (userId, token) =>
     fetch(`${firebase_storage_url}/users/${userId}.json`, {
         method: 'PUT',
