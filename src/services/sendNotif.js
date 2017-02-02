@@ -1,21 +1,9 @@
-import { 
-    firebase_push_url, 
-    firebase_auth 
-} from '../../config/config.json';
+import webpush from 'web-push';
 
-export default (recieverToken, data) => 
-    fetch(firebase_push_url, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `key=${firebase_auth}`
-        },
-        body: JSON.stringify({
-            "to" : recieverToken,
-            data,
-            "notification": {
-                "title": "Portugal vs. Denmark",
-                "body": "5 to 1"
-            }
-        })
-    })
+export default (pushSubscription, data) => 
+    webpush.sendNotification(
+        pushSubscription,
+        JSON.stringify(data)
+    )
+    .then(console.log)
+    .catch(console.log);
