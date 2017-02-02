@@ -8,7 +8,8 @@ export default (request, reply) => {
 
     // Send notification as a side effect
     getTokenForUser(userId)
-        .then(usrToken => sendNotif(usrToken, request.payload));
+        .then(pushSubscription => 
+            sendNotif(pushSubscription, request.payload));
         
     reply('Hello, ' + request.payload + '!');
 };

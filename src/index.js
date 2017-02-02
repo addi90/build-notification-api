@@ -4,6 +4,7 @@ import Hapi from 'hapi';
 import Http2 from 'http2';
 
 import routes from './routes';
+import { initializeWebPush } from './services/webPush';
 
 const server = new Hapi.Server({ 
     debug: { 
@@ -28,6 +29,7 @@ server.connection({
 
 server.route(routes);
 
+initializeWebPush();
 server.start((err) => {
     if (err) {
         throw err;

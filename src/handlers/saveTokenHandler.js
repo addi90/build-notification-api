@@ -3,8 +3,8 @@ import { setTokenForUser } from '../services/token'
 
 export default (request, reply) => {
     log.info(request.payload);        
-    const { userId = 1, token } = request.payload;
-    setTokenForUser(userId, token);
+    const { userId = 1 } = request.payload;
+    setTokenForUser(userId, request.payload);
     
     reply('Hello, ' + request.payload + '!');
 };

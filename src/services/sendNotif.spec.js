@@ -16,7 +16,8 @@ after(() => {
 
 describe("Send Notification ", () => {
     it('should send a notification', () => {
-        const respPromise = sendNotif('AABB', {});
+        const pushSubscriptionMock = JSON.parse("{\"endpoint\":\"https://dummy.com/endpoint\",\"keys\":{\"p256dh\":\"dummy-key\",\"auth\":\"dummy==auth\"}}");
+        const respPromise = sendNotif(pushSubscriptionMock, {});
 
         expect(sendNotifStub.called);
         respPromise.then(res => {
