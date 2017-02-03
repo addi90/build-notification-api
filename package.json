@@ -18,14 +18,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/addi90/build-notification-api.git"
+    "url": "git+https://github.com/addityasingh/build-notification-api.git"
   },
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/addi90/build-notification-api/issues"
+    "url": "https://github.com/addityasingh/build-notification-api/issues"
   },
-  "homepage": "https://github.com/addi90/build-notification-api#readme",
+  "homepage": "https://github.com/addityasingh/build-notification-api#readme",
   "dependencies": {
     "babel-register": "^6.18.0",
     "bunyan": "^1.8.5",
