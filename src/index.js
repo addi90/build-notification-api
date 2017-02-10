@@ -24,7 +24,7 @@ if (!listener.address) {
 }
 
 server.connection({ 
-    port: 4567 
+    port: 8080 
 });
 
 server.route(routes);
