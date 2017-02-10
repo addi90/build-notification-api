@@ -23,7 +23,7 @@ if (!listener.address) {
   }
 }
 
-const port = process.env.PORT || 4567
+const port = process.env.PORT || 8080
 server.connection({ 
     port
 });

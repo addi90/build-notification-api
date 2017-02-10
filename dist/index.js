@@ -40,8 +40,9 @@ if (!listener.address) {
     };
 }
 
+var port = process.env.PORT || 4567;
 server.connection({
-    port: 8080
+    port: port
 });
 
 server.route(_routes2.default);
