@@ -23,8 +23,9 @@ if (!listener.address) {
   }
 }
 
+const port = process.env.PORT || 4567
 server.connection({ 
-    port: 8080 
+    port
 });
 
 server.route(routes);
