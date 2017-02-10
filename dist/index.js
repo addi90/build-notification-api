@@ -40,7 +40,7 @@ if (!listener.address) {
     };
 }
 
-var port = process.env.PORT || 4567;
+var port = process.env.PORT || 8080;
 server.connection({
     port: port
 });
