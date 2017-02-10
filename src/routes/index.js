@@ -1,4 +1,5 @@
 import {
+    authorizeHandler,
     payloadHandler,
     rootHandler,
     getTokenHandler,
@@ -28,5 +29,11 @@ export default [
         method: 'GET',
         path: '/token',
         handler: getTokenHandler
+    },
+
+    {
+        method: 'GET',
+        path: '/authorize',
+        handler: authorizeHandler
     } 
 ];
