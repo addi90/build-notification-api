@@ -38,6 +38,5 @@ jspm_packages
 .node_repl_history
 
 # Output folders
-dist
 coverage
 .nyc_output
